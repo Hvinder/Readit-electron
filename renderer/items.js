@@ -1,3 +1,4 @@
+const { shell } = require("electron");
 const fs = require("fs");
 let readerJS;
 fs.readFile(`${__dirname}/reader.js`, (err, data) => {
@@ -66,6 +67,13 @@ exports.open = () => {
   `
   );
   readerWin.eval(readerJS.replace("{{index}}", this.getSelectedItem().index));
+};
+
+exports.openNative = () => {
+  if (!this.storage.length) return;
+  let selectedItem = this.getSelectedItem().node;
+  let contentURL = selectedItem.dataset.url;
+  shell.openExternal(contentURL);
 };
 
 exports.changeSelection = (direction) => {

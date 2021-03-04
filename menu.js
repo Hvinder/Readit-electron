@@ -12,6 +12,34 @@ module.exports = (appWin) => {
           },
           accelerator: "CmdOrCtrl+O",
         },
+        {
+          label: "Read Item",
+          click: () => {
+            appWin.send("menu-open-item");
+          },
+          accelerator: "CmdOrCtrl+Enter",
+        },
+        {
+          label: "Delete Item",
+          click: () => {
+            appWin.send("menu-delete-item");
+          },
+          accelerator: "CmdOrCtrl+Backspace",
+        },
+        {
+          label: "Open in Browser",
+          click: () => {
+            appWin.send("menu-open-item-native");
+          },
+          accelerator: "CmdOrCtrl+Shift+Enter",
+        },
+        {
+          label: "Search Items",
+          click: () => {
+            appWin.send("menu-focus-search");
+          },
+          accelerator: "CmdOrCtrl+S",
+        },
       ],
     },
     { role: "editMenu" },
